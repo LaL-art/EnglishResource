@@ -1,49 +1,54 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model StudyFileDisplayModel
+@{
+
 }
 
 <div class="my-2 mt-4"">
-    <form class="row row-cols-lg-auto g-3 align-items-center">
+    <form asp-action="Index" class="row row-cols-lg-auto g-3 align-items-center">
   <div class="col-12">
     <label class="visually-hidden" for="inlineFormInputGroupUsername">Username</label>
     <div class="input-group">
       <div class="input-group-text"></div>
-      <input type="text" class="form-control" id="" placeholder="Search for materials!">
+      <input type="text" class="form-control" id="sterm" name="sterm" placeholder="Search for materials!" >
     </div>
   </div>
 
   <div class="col-12">
-    <button type="submit" class="btn btn-primary">Search</button>
+    <button type="submit" class="btn btn-primary">Search!</button>
   </div>
 </form>
 </div>
 
 <div class="my-2 mt-4 mb-4"">
-    <form class="row row-cols-lg-auto g-3 align-items-center">
+    <form asp-action="Index" class="row row-cols-lg-auto g-3 align-items-center">
     <div class="col-12">
         <label class="visually-hidden" for="inlineFormSelectPref">Level</label>
-        <select class="form-select" id="levelId">
+        <select class="form-select" id="levelId" name="levelId">
             <option selected>Choose level...</option>
-            <option value="1">A1</option>
-            <option value="2">A2</option>
-            <option value="3">B1</option>
-            <option value="4">B2</option>
-            <option value="5">C1</option>
-            <option value="6">C2</option>
+                @foreach (var level in Model.Levels)
+                {
+                    <option value="@level.Id">@level.CEFRLevel</option>
+                }
         </select>
     </div>
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary">Filter!</button>
+        </div>
  </form>
 </div>
 
 <div class="w-140 mt-4 d-flex flex-wrap"> 
-    @for (int i=1; i<9; i++){
+    @foreach (var studyFile in Model.StudyFiles)
+    {
 <div class="card mx-2 mb-4" style="width: 18rem;">
      @* <img src="https://picsum.photos/seed/picsum/200/300" class="card-img-top" alt="..."> *@
     <div class="card-body">
-        <h5 class="card-title">StudyFile</h5>
+        <h5 class="card-title">@studyFile.FileName</h5>
         <p class="card-text">
-        Level: 
-        Topic:
+            Level: @studyFile.LevelName
+        </p>
+        <p class="card-text">
+                Topic: @studyFile.TopicName
         </p>
         <a href="#" class="btn btn-primary">Add to Favourites</a>
     </div>

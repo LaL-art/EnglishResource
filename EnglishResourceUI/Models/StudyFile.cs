@@ -17,5 +17,10 @@ namespace EnglishResourceUI.Models
         public List<FavouritesDetail> FavouritesDetail { get; set; }
         public Level Level { get; set; }
         public Topic Topic { get; set; }
+
+        [NotMapped]
+        public string TopicName { get; set; }
+        [NotMapped]
+        public string LevelName { get; set; }
     }
 }
