@@ -36,7 +36,7 @@ namespace EnglishResourceUI.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Favourites");
+                    b.ToTable("Favourites", (string)null);
                 });
 
             modelBuilder.Entity("EnglishResourceUI.Models.FavouritesDetail", b =>
@@ -62,7 +62,7 @@ namespace EnglishResourceUI.Data.Migrations
 
                     b.HasIndex("StudyFileId");
 
-                    b.ToTable("FavouritesDetail");
+                    b.ToTable("FavouritesDetail", (string)null);
                 });
 
             modelBuilder.Entity("EnglishResourceUI.Models.Level", b =>
@@ -79,7 +79,7 @@ namespace EnglishResourceUI.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Level");
+                    b.ToTable("Level", (string)null);
                 });
 
             modelBuilder.Entity("EnglishResourceUI.Models.StudyFile", b =>
@@ -111,7 +111,7 @@ namespace EnglishResourceUI.Data.Migrations
 
                     b.HasIndex("TopicId");
 
-                    b.ToTable("StudyFiles");
+                    b.ToTable("StudyFiles", (string)null);
                 });
 
             modelBuilder.Entity("EnglishResourceUI.Models.Topic", b =>
@@ -129,7 +129,7 @@ namespace EnglishResourceUI.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Topic");
+                    b.ToTable("Topic", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

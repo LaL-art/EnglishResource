@@ -23,7 +23,9 @@ namespace EnglishResourceUI.Controllers
             StudyFileDisplayModel studyFileModel = new StudyFileDisplayModel
             {
                 StudyFiles = studyFiles,
-                Levels = levels     
+                Levels = levels,
+                STerm = sterm,
+                LevelId = levelId
             };
             return View(studyFileModel);
         }

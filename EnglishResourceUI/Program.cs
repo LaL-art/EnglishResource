@@ -17,6 +17,7 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>(options => options.Sign
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
 builder.Services.AddTransient<IHomeRepository, HomeRepository>();
+builder.Services.AddTransient<IFavouritesRepository, FavouritesRepository>();
 
 var app = builder.Build();
 //using (var scope = app.Services.CreateScope())

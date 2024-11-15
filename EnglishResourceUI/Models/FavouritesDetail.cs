@@ -8,8 +8,7 @@ namespace EnglishResourceUI.Models
     {
         public int Id { get; set; }
         [Required]
-        public int Favourites_Id { get; set; }
-        [Required]
+        public int FavouritesId { get; set; }
         public int StudyFileId { get; set; }
         public StudyFile StudyFile { get; set; }
         public Favourites Favourites { get; set; }

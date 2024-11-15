@@ -6,15 +6,15 @@
 <div class="my-2 mt-4"">
     <form asp-action="Index" class="row row-cols-lg-auto g-3 align-items-center">
   <div class="col-12">
-    <label class="visually-hidden" for="inlineFormInputGroupUsername">Username</label>
+            <label class="visually-hidden" for="sterm">Username</label>
     <div class="input-group">
       <div class="input-group-text"></div>
-      <input type="text" class="form-control" id="sterm" name="sterm" placeholder="Search for materials!" >
+      <input type="text" class="form-control" value ="@Model.STerm" id="sterm" name="sterm" placeholder="Search for materials!" >
     </div>
   </div>
 
   <div class="col-12">
-    <button type="submit" class="btn btn-primary">Search!</button>
+    <button type="submit" class="btn btn-outline-secondary">Search!</button>
   </div>
 </form>
 </div>
@@ -22,17 +22,17 @@
 <div class="my-2 mt-4 mb-4"">
     <form asp-action="Index" class="row row-cols-lg-auto g-3 align-items-center">
     <div class="col-12">
-        <label class="visually-hidden" for="inlineFormSelectPref">Level</label>
+            <label class="visually-hidden" for="levelId">Level</label>
         <select class="form-select" id="levelId" name="levelId">
             <option selected>Choose level...</option>
                 @foreach (var level in Model.Levels)
                 {
-                    <option value="@level.Id">@level.CEFRLevel</option>
+                    <option selected="@(level.Id == Model.LevelId)" value="@level.Id">@level.CEFRLevel</option>
                 }
         </select>
     </div>
         <div class="col-12">
-            <button type="submit" class="btn btn-primary">Filter!</button>
+            <button type="submit" class="btn btn-outline-secondary">Filter!</button>
         </div>
  </form>
 </div>
@@ -50,8 +50,34 @@
         <p class="card-text">
                 Topic: @studyFile.TopicName
         </p>
-        <a href="#" class="btn btn-primary">Add to Favourites</a>
+        <button type="button" onclick="add(@studyFile.Id)" class="btn btn-secondary">Add to Favourites</button>
     </div>
 </div>
     }
 </div>
+@section Scripts{
+    <script>
+        async function add(studyFileId) {
+            var usernameEl = document.getElementById("username");
+            if (usernameEl == null) {
+                window.location.href = "/Identity/Account/Login"
+                // var username = usernameEl.innerText;
+                // if (username.length < 1) {
+                //     window.location.href = "/Identity/Account/Login"
+                // }
+            }
+            try {
+                var response = await fetch(`/Favourites/AddItem?studyFileId=${studyFileId}`);
+                if (response.status == 200) {
+                    var result = await response.json();
+                    var favouritesCountEl = document.getElementById("favouritesCount");
+                    favouritesCountEl.innerHTML = result;
+                    window.location.href = "#favouritesCount";
+                }
+            }
+            catch (err) {
+                console.log(err);
+            }
+        }
+    </script>
+}

@@ -1,0 +1,46 @@
+﻿@model Favourites
+@{
+    ViewData["Title"] = "GetUserFavourites";
+}
+
+<div style="width:90%; margin:auto">
+    <h3>My Favourites</h3>
+    @if (Model != null && Model.FavouritesDetails != null && Model.FavouritesDetails.Count > 0)
+    {
+        <table class="table table-striped">
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Level
+                </th>
+                <th>
+                    Topic
+                </th>
+            </tr>
+            @foreach (var item in Model.FavouritesDetails)
+            {
+                <tr>
+                    <td>
+                        @item.StudyFile.FileName
+                    </td>
+                    <td>
+                        @item.StudyFile.Level.CEFRLevel
+                    </td>
+                    <td>
+                        @item.StudyFile.Topic.TopicName
+                    </td>
+                    <td>
+                        <a class="btn btn-outline-secondary" href="/Favourites/RemoveItem?studyFileId=@item.StudyFileId">Delete</a>
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+    else
+    {
+        <h5>No Favourites yet</h5>
+    }
+</div>
+
