@@ -1,0 +1,44 @@
+﻿@model StudyFileDTO
+@{
+}
+
+<div style="width:50%">
+    <h2> Add File </h2>
+    <a asp-action="Index" asp-controller="StudyFile" class="btn btn-secondary">Back</a>
+    <form asp-action="AddFile" enctype="multipart/form-data">
+        @* <input type="hidden" asp-for="Id" /> *@
+
+        <div class="my-2">
+            <label>File Name*</label>
+            <input type="text" class="form-control" asp-for="FileName" />
+            <span asp-validation-for="FileName" class="text-danger"></span>
+        </div>
+
+        <div class="my-2">
+            <label>File URL*</label>
+            <input type="text" class="form-control" asp-for="FileURL" />
+            <span asp-validation-for="FileURL" class="text-danger"></span>
+        </div>
+
+        <div class="my-2">
+            <label>Topic*</label>
+            <select class="form-control" asp-for="TopicId" asp-items="Model.TopicList">
+                <option value="">Select Topic...</option>
+            </select>
+            <span asp-validation-for="TopicId" class="text-danger"></span>
+        </div>
+
+        <div class="my-2">
+            <label>Level*</label>
+            <select class="form-control" asp-for="LevelId" asp-items="Model.LevelList">
+                <option value="">Select Level...</option>
+            </select>
+            <span asp-validation-for="LevelId" class="text-danger"></span>
+        </div>
+
+        <div class="my-2">
+            <button type="submit" class="btn btn-info">Add</button>
+        </div>
+    </form>
+</div>
+

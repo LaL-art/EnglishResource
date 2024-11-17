@@ -18,6 +18,9 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>(options => options.Sign
 builder.Services.AddControllersWithViews();
 builder.Services.AddTransient<IHomeRepository, HomeRepository>();
 builder.Services.AddTransient<IFavouritesRepository, FavouritesRepository>();
+builder.Services.AddTransient<ITopicRepository, TopicRepository>();
+builder.Services.AddTransient<ILevelRepository, LevelRepository>();
+builder.Services.AddTransient<IStudyFileRepository, StudyFileRepository>();
 
 var app = builder.Build();
 //using (var scope = app.Services.CreateScope())

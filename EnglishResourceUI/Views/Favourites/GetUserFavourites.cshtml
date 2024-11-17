@@ -3,7 +3,7 @@
     ViewData["Title"] = "GetUserFavourites";
 }
 
-<div style="width:90%; margin:auto">
+<div style="width:90%; margin:auto" class="mt-2">
     <h3>My Favourites</h3>
     @if (Model != null && Model.FavouritesDetails != null && Model.FavouritesDetails.Count > 0)
     {
@@ -16,8 +16,9 @@
                     Level
                 </th>
                 <th>
-                    Topic
+                    Download
                 </th>
+                <th></th>
             </tr>
             @foreach (var item in Model.FavouritesDetails)
             {
@@ -28,11 +29,14 @@
                     <td>
                         @item.StudyFile.Level.CEFRLevel
                     </td>
-                    <td>
+                   @*  <td>
                         @item.StudyFile.Topic.TopicName
+                    </td> *@
+                    <td>
+                        <a class="btn btn-outline-secondary" href="@item.StudyFile.FileURL">Download now</a>
                     </td>
                     <td>
-                        <a class="btn btn-outline-secondary" href="/Favourites/RemoveItem?studyFileId=@item.StudyFileId">Delete</a>
+                        <a class="btn btn-outline-danger" href="/Favourites/RemoveItem?studyFileId=@item.StudyFileId">Delete</a>
                     </td>
                 </tr>
             }

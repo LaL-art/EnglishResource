@@ -1,0 +1,21 @@
+﻿@model TopicDTO
+@{
+}
+<div style="width:50%">
+    <h2> Update Topic </h2>
+    <a asp-action="Index" asp-controller="Topic" class="btn btn-secondary">Back</a>
+    <form asp-action="UpdateTopic">
+        <input type="hidden" asp-for="Id"/>
+
+        <div class="my-2">
+            <label>Topic</label>
+            <input type="text" class="form-control" asp-for="TopicName" />
+            <span asp-validation-for="TopicName" class="text-danger"></span>
+        </div>
+
+        <div class="my-2">
+            <button type="submit" class="btn btn-info">Update</button>
+        </div>
+    </form>
+</div>
+

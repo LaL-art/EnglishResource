@@ -1,0 +1,21 @@
+﻿@model LevelDTO
+@{
+}
+
+<div style="width:50%">
+    <h2> Update Level </h2>
+    <a asp-action="Index" asp-controller="Level" class="btn btn-secondary">Back</a>
+    <form asp-action="UpdateLevel">
+        <input type="hidden" asp-for="Id" />
+
+        <div class="my-2">
+            <label>Level</label>
+            <input type="text" class="form-control" asp-for="CEFRLevel" />
+            <span asp-validation-for="CEFRLevel" class="text-danger"></span>
+        </div>
+
+        <div class="my-2">
+            <button type="submit" class="btn btn-info">Update</button>
+        </div>
+    </form>
+</div>

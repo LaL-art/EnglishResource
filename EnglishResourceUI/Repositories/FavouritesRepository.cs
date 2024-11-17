@@ -48,15 +48,18 @@ namespace EnglishResourceUI.Repositories
                                      .FirstOrDefault(a => a.FavouritesId == favourite.Id && a.StudyFileId == studyFileId);
                 if (favouritesItem is null)
                 {
+                    var studyFile = _db.Favoritess.Find(studyFileId);
                     favouritesItem = new FavouritesDetail
                     {
                         StudyFileId = studyFileId, 
                         FavouritesId = favourite.Id
 
                     };
-                    _db.FavoritesDetails.Add(favouritesItem);
-                    transaction.Commit();
+                   
                 }
+                _db.FavoritesDetails.Add(favouritesItem);
+                _db.SaveChanges();
+                transaction.Commit();
             }
             catch (Exception ex)
             { 
